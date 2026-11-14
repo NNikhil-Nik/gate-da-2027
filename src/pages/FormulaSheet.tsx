@@ -44,9 +44,11 @@ export function FormulaSheet({ modules }: Props) {
                   <div key={i} className="pl-4 border-l-2 border-gray-200 dark:border-gray-700">
                     <p className="text-[12px] font-medium text-gray-600 dark:text-gray-300 mb-1">{f.name}</p>
                     <MathText content={`$$${f.latex}$$`} />
-                    <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-1">
-                      <MathText content={f.variables} />
-                    </p>
+                    {f.variables && (
+                      <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-1">
+                        <MathText content={f.variables} />
+                      </p>
+                    )}
                     {f.conditions && (
                       <p className="text-[11px] text-amber-600 dark:text-amber-400 mt-0.5">
                         <MathText content={f.conditions} />

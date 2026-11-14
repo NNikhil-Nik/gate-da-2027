@@ -19,7 +19,6 @@ export function TopicViewer({ topic, progress, onToggleComplete, onBookmark, onA
   const isComplete = progress.completedTopics.includes(topic.id);
 
   const pyqs = topic.practiceQuestions.filter(q => q.isPYQ);
-  const practiceOnly = topic.practiceQuestions.filter(q => !q.isPYQ);
   const [practiceFilter, setPracticeFilter] = useState<'all' | 'basic' | 'intermediate' | 'gate' | 'challenging' | 'pyq' | 'bookmarked' | 'incorrect'>('all');
 
   const filteredQuestions = (() => {
@@ -186,9 +185,11 @@ export function TopicViewer({ topic, progress, onToggleComplete, onBookmark, onA
               <div className="mb-2">
                 <MathText content={`$$${f.latex}$$`} />
               </div>
-              <p className="text-[12px] text-gray-500 dark:text-gray-400 mb-1">
-                <span className="font-medium">Variables:</span> <MathText content={f.variables} />
-              </p>
+              {f.variables && (
+                <p className="text-[12px] text-gray-500 dark:text-gray-400 mb-1">
+                  <span className="font-medium">Variables:</span> <MathText content={f.variables} />
+                </p>
+              )}
               {f.conditions && (
                 <p className="text-[12px] text-gray-500 dark:text-gray-400 mb-1">
                   <span className="font-medium">Conditions:</span> <MathText content={f.conditions} />

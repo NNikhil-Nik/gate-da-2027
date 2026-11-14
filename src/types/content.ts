@@ -4,7 +4,7 @@ export type Difficulty = 'basic' | 'intermediate' | 'gate' | 'challenging';
 export interface Formula {
   name: string;
   latex: string;
-  variables: string;
+  variables?: string;
   conditions?: string;
   notes?: string;
 }
